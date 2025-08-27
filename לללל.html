@@ -1,0 +1,113 @@
+```html
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8" />
+<title>בית חיינו</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('https://i.ibb.co/Q7cfBwNT/IMG-20250731-WA0033-jpg.webp');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+  }
+  header {
+    background-color: rgba(0,0,0,0.6);
+    padding: 20px;
+    font-size: 36px;
+    font-weight: bold;
+  }
+  .year-button {
+    background-color: rgba(0,0,0,0.5);
+    border: 1px solid white;
+    border-radius: 8px;
+    color: white;
+    padding: 15px 30px;
+    font-size: 24px;
+    margin: 20px 10px;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .months {
+    display: none;
+    margin-top: 10px;
+    background-color: rgba(0,0,0,0.5);
+    padding: 15px;
+    border-radius: 8px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .months a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 8px 0;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+  }
+  .months a:last-child {
+    border-bottom: none;
+  }
+  .months a:hover {
+    background-color: rgba(255,255,255,0.2);
+  }
+</style>
+</head>
+<body>
+  <header>בית חיינו</header>
+
+  <div>
+    <div class="year-button" onclick="toggleMonths('year1')">תשפ&quot;ה</div>
+    <div id="year1" class="months">
+      <a href="#">תשרי</a>
+      <a href="#">חשוון</a>
+      <a href="#">כסלו</a>
+      <a href="#">טבת</a>
+      <a href="#">שבט</a>
+      <a href="#">אדר</a>
+      <a href="#">ניסן</a>
+      <a href="#">אייר</a>
+      <a href="#">סיון</a>
+      <a href="#">תמוז</a>
+      <a href="#">אב</a>
+      <a href="#">אלול</a>
+    </div>
+  </div>
+
+  <div>
+    <div class="year-button" onclick="toggleMonths('year2')">תשפ&quot;ו</div>
+    <div id="year2" class="months">
+      <a href="#">תשרי</a>
+      <a href="#">חשוון</a>
+      <a href="#">כסלו</a>
+      <a href="#">טבת</a>
+      <a href="#">שבט</a>
+      <a href="#">אדר</a>
+      <a href="#">ניסן</a>
+      <a href="#">אייר</a>
+      <a href="#">סיון</a>
+      <a href="#">תמוז</a>
+      <a href="#">אב</a>
+      <a href="#">אלול</a>
+    </div>
+  </div>
+
+<script>
+  function toggleMonths(id) {
+    const el = document.getElementById(id);
+    if (el.style.display === 'block') {
+      el.style.display = 'none';
+    } else {
+      document.querySelectorAll('.months').forEach(div => div.style.display = 'none');
+      el.style.display = 'block';
+    }
+  }
+</script>
+</body>
+</html>
+```
