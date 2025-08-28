@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8" />
+<title>בית חיינו</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('https://i.ibb.co/Q7cfBwNT/IMG-20250731-WA0033-jpg.webp');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+  }
+  header {
+    background-color: rgba(0,0,0,0.6);
+    padding: 20px;
+    font-size: 36px;
+    font-weight: bold;
+  }
+  .notice {
+    background-color: #fff3f3;
+    border: 2px solid red;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 15px;
+    margin: 20px auto;
+    width: 70%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+  .year-button {
+    background-color: rgba(0,0,0,0.5);
+    border: 1px solid white;
+    border-radius: 8px;
+    color: white;
+    padding: 15px 30px;
+    font-size: 24px;
+    margin: 20px 10px;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .months {
+    display: none;
+    margin-top: 10px;
+    background-color: rgba(0,0,0,0.5);
+    padding: 15px;
+    border-radius: 8px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .months a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 8px 0;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+  }
+  .months a:last-child {
+    border-bottom: none;
+  }
+  .months a:hover {
+    background-color: rgba(255,255,255,0.2);
+  }
+  .month-content {
+    display: none;
+    margin: 20px auto;
+    background-color: rgba(0,0,0,0.6);
+    padding: 15px;
+    border-radius: 10px;
+    width: 80%;
+  }
+  .month-content h2 {
+    color: #fff;
+  }
+  .month-content .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .month-content .gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+  footer {
+    margin-top: 40px;
+    font-size: 16px;
+    color: #fff;
+    opacity: 0.8;
+  }
+</style>
+</head>
+<body>
+<header>בית חיינו</header>
+
+<div class="notice">
+   האתר בהרצה – ייתכנו שינויים ושדרוגים בהמשך  
+</div>
+
+<!-- כפתורי שנים -->
+<div>
+  <div class="year-button" onclick="toggleMonths('year1')">תשפ&quot;ה</div>
+  <div id="year1" class="months">
+    <a href="#" onclick="showMonth('tishrei1')">תשרי</a>
+    <a href="#" onclick="showMonth('cheshvan1')">חשוון</a>
+    <a href="#" onclick="showMonth('kislev1')">כסלו</a>
+    <a href="#" onclick="showMonth('tevet1')">טבת</a>
+    <a href="#" onclick="showMonth('shevat1')">שבט</a>
+    <a href="#" onclick="showMonth('adar1')">אדר</a>
+    <a href="#" onclick="showMonth('nisan1')">ניסן</a>
+    <a href="#" onclick="showMonth('iyar1')">אייר</a>
+    <a href="#" onclick="showMonth('sivan1')">סיון</a>
+    <a href="#" onclick="showMonth('tamuz1')">תמוז</a>
+    <a href="#" onclick="showMonth('av1')">אב</a>
+    <a href="#" onclick="showMonth('elul1')">אלול</a>
+  </div>
+</div>
+
+<div>
+  <div class="year-button" onclick="toggleMonths('year2')">תשפ&quot;ו</div>
+  <div id="year2" class="months">
+    <a href="#" onclick="showMonth('tishrei2')">תשרי</a>
+    <a href="#" onclick="showMonth('cheshvan2')">חשוון</a>
+    <a href="#" onclick="showMonth('kislev2')">כסלו</a>
+    <a href="#" onclick="showMonth('tevet2')">טבת</a>
+    <a href="#" onclick="showMonth('shevat2')">שבט</a>
+    <a href="#" onclick="showMonth('adar2')">אדר</a>
+    <a href="#" onclick="showMonth('nisan2')">ניסן</a>
+    <a href="#" onclick="showMonth('iyar2')">אייר</a>
+    <a href="#" onclick="showMonth('sivan2')">סיון</a>
+    <a href="#" onclick="showMonth('tamuz2')">תמוז</a>
+    <a href="#" onclick="showMonth('av2')">אב</a>
+    <a href="#" onclick="showMonth('elul2')">אלול</a>
+  </div>
+</div>
+
+<!-- חודש אב -->
+<div id="av1" class="month-content">
+  <h2>אב תשפ"ה</h2>
+  <div class="gallery">
+    <a href="https://ibb.co/LDgHWNFx" target="_blank"><img src="https://i.ibb.co/mrygwNj9/7-jpg.webp" alt="7-jpg"></a>
+    <a href="https://ibb.co/rKSqdcyZ" target="_blank"><img src="https://i.ibb.co/ym1K4Ys8/3-rotated-jpg.webp" alt="3-rotated-jpg"></a>
+    <a href="https://ibb.co/zHtdgNxv" target="_blank"><img src="https://i.ibb.co/WpRCXs5J/1000089556-jpeg.webp" alt="1000089556-jpeg"></a>
+    <a href="https://ibb.co/m5HfVYWR" target="_blank"><img src="https://i.ibb.co/ZzhqpwDf/18-jpg.webp" alt="18-jpg"></a>
+    <a href="https://ibb.co/0RPxnSjn" target="_blank"><img src="https://i.ibb.co/jP7S82v8/15-jpg.webp" alt="15-jpg"></a>
+    <a href="https://ibb.co/hJNQsfwf" target="_blank"><img src="https://i.ibb.co/xtb9hHdH/14-jpg.webp" alt="14-jpg"></a>
+    <a href="https://ibb.co/j9k5sVZ7" target="_blank"><img src="https://i.ibb.co/Ng23b1nw/12-jpg.webp" alt="12-jpg"></a>
+    <a href="https://ibb.co/zhRW4PgB" target="_blank"><img src="https://i.ibb.co/Z68RMcrF/11-jpg.webp" alt="11-jpg"></a>
+    <a href="https://ibb.co/wNY9DFxT" target="_blank"><img src="https://i.ibb.co/BVwX85Sm/IMG-20250731-WA0021-jpg.webp" alt="IMG-20250731-WA0021-jpg"></a>
+    <a href="https://ibb.co/WvgM8w2p" target="_blank"><img src="https://i.ibb.co/5hBSpyRx/IMG-20250731-WA0025-jpg.webp" alt="IMG-20250731-WA0025-jpg"></a>
+    <a href="https://ibb.co/qFF79K35" target="_blank"><img src="https://i.ibb.co/2YYWPx1N/IMG-20250731-WA0029-jpg.webp" alt="IMG-20250731-WA0029-jpg"></a>
+    <a href="https://ibb.co/yFFyKW5d" target="_blank"><img src="https://i.ibb.co/3mmNVBW4/IMG-20250731-WA0032-jpg.webp" alt="IMG-20250731-WA0032-jpg"></a>
+    <a href="https://ibb.co/BVRQmvTg" target="_blank"><img src="https://i.ibb.co/hRv4kr2K/IMG-20250731-WA0027-jpg.webp" alt="IMG-20250731-WA0027-jpg"></a>
+    <a href="https://ibb.co/hJTknc9M" target="_blank"><img src="https://i.ibb.co/ycxDMpPR/IMG-20250731-WA0043-jpg.webp" alt="IMG-20250731-WA0043-jpg"></a>
+    <a href="https://ibb.co/0R3bc85M" target="_blank"><img src="https://i.ibb.co/FLtTKNpw/IMG-20250731-WA0037-jpg.webp" alt="IMG-20250731-WA0037-jpg"></a>
+  </div>
+</div>
+
+<script>
+function toggleMonths(id) {
+  const el = document.getElementById(id);
+  if (el.style.display === 'block') {
+    el.style.display = 'none';
+  } else {
+    document.querySelectorAll('.months').forEach(div => div.style.display = 'none');
+    el.style.display = 'block';
+  }
+}
+
+function showMonth(id) {
+  document.querySelectorAll('.month-content').forEach(div => div.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+}
+</script>
+
+<footer>
+  מבית צ'אט גור עסקי
+</footer>
+</body>
+</html>
