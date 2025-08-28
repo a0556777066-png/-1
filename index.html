@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="he">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
 <title>בית חיינו</title>
 <style>
   body {
-    font-family: Arial, sans-serif;
     margin: 0;
+    font-family: Arial, sans-serif;
     background-image: url('https://i.ibb.co/Q7cfBwNT/IMG-20250731-WA0033-jpg.webp');
     background-size: cover;
     background-position: center;
     color: white;
     text-align: center;
   }
-
-  /* הודעת אתר בהרצה */
+  header {
+    background-color: rgba(0,0,0,0.6);
+    padding: 20px;
+    font-size: 36px;
+    font-weight: bold;
+  }
   .notice {
     background-color: #fff3f3;
     border: 2px solid red;
@@ -28,14 +31,6 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
   }
-
-  header {
-    background-color: rgba(0,0,0,0.6);
-    padding: 20px;
-    font-size: 36px;
-    font-weight: bold;
-  }
-
   .year-button {
     background-color: rgba(0,0,0,0.5);
     border: 1px solid white;
@@ -47,7 +42,6 @@
     cursor: pointer;
     display: inline-block;
   }
-
   .months {
     display: none;
     margin-top: 10px;
@@ -58,7 +52,6 @@
     margin-left: auto;
     margin-right: auto;
   }
-
   .months a {
     display: block;
     color: white;
@@ -68,15 +61,26 @@
     border-bottom: 1px solid white;
     cursor: pointer;
   }
-
   .months a:last-child {
     border-bottom: none;
   }
-
   .months a:hover {
     background-color: rgba(255,255,255,0.2);
   }
-
+  .month-content {
+    display: none;
+    margin: 20px auto;
+    background-color: rgba(0,0,0,0.6);
+    padding: 15px;
+    border-radius: 10px;
+    width: 80%;
+  }
+  .month-content img, .month-content video {
+    width: 300px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
   footer {
     margin-top: 40px;
     font-size: 16px;
@@ -86,65 +90,96 @@
 </style>
 </head>
 <body>
-
 <header>בית חיינו</header>
 
 <div class="notice">
   ⚠ האתר בהרצה – ייתכנו שינויים ושדרוגים בהמשך ⚠
 </div>
 
-<!-- כפתורים לשנים -->
+<!-- כפתורי שנים -->
 <div>
   <div class="year-button" onclick="toggleMonths('year1')">תשפ&quot;ה</div>
   <div id="year1" class="months">
-    <a href="#">תשרי</a>
-    <a href="#">חשוון</a>
-    <a href="#">כסלו</a>
-    <a href="#">טבת</a>
-    <a href="#">שבט</a>
-    <a href="#">אדר</a>
-    <a href="#">ניסן</a>
-    <a href="#">אייר</a>
-    <a href="#">סיון</a>
-    <a href="#">תמוז</a>
-    <a href="#">אב</a>
-    <a href="#">אלול</a>
+    <a href="#" onclick="showMonth('tishrei1')">תשרי</a>
+    <a href="#" onclick="showMonth('cheshvan1')">חשוון</a>
+    <a href="#" onclick="showMonth('kislev1')">כסלו</a>
+    <a href="#" onclick="showMonth('tevet1')">טבת</a>
+    <a href="#" onclick="showMonth('shevat1')">שבט</a>
+    <a href="#" onclick="showMonth('adar1')">אדר</a>
+    <a href="#" onclick="showMonth('nisan1')">ניסן</a>
+    <a href="#" onclick="showMonth('iyar1')">אייר</a>
+    <a href="#" onclick="showMonth('sivan1')">סיון</a>
+    <a href="#" onclick="showMonth('tamuz1')">תמוז</a>
+    <a href="#" onclick="showMonth('av1')">אב</a>
+    <a href="#" onclick="showMonth('elul1')">אלול</a>
   </div>
 </div>
 
 <div>
   <div class="year-button" onclick="toggleMonths('year2')">תשפ&quot;ו</div>
   <div id="year2" class="months">
-    <a href="#">תשרי</a>
-    <a href="#">חשוון</a>
-    <a href="#">כסלו</a>
-    <a href="#">טבת</a>
-    <a href="#">שבט</a>
-    <a href="#">אדר</a>
-    <a href="#">ניסן</a>
-    <a href="#">אייר</a>
-    <a href="#">סיון</a>
-    <a href="#">תמוז</a>
-    <a href="#">אב</a>
-    <a href="#">אלול</a>
+    <a href="#" onclick="showMonth('tishrei2')">תשרי</a>
+    <a href="#" onclick="showMonth('cheshvan2')">חשוון</a>
+    <a href="#" onclick="showMonth('kislev2')">כסלו</a>
+    <a href="#" onclick="showMonth('tevet2')">טבת</a>
+    <a href="#" onclick="showMonth('shevat2')">שבט</a>
+    <a href="#" onclick="showMonth('adar2')">אדר</a>
+    <a href="#" onclick="showMonth('nisan2')">ניסן</a>
+    <a href="#" onclick="showMonth('iyar2')">אייר</a>
+    <a href="#" onclick="showMonth('sivan2')">סיון</a>
+    <a href="#" onclick="showMonth('tamuz2')">תמוז</a>
+    <a href="#" onclick="showMonth('av2')">אב</a>
+    <a href="#" onclick="showMonth('elul2')">אלול</a>
   </div>
 </div>
 
+<!-- תוכן חודשים תשפ"ה -->
+<div id="tishrei1" class="month-content"><h2>תשרי תשפ"ה</h2></div>
+<div id="cheshvan1" class="month-content"><h2>חשוון תשפ"ה</h2></div>
+<div id="kislev1" class="month-content"><h2>כסלו תשפ"ה</h2></div>
+<div id="tevet1" class="month-content"><h2>טבת תשפ"ה</h2></div>
+<div id="shevat1" class="month-content"><h2>שבט תשפ"ה</h2></div>
+<div id="adar1" class="month-content"><h2>אדר תשפ"ה</h2></div>
+<div id="nisan1" class="month-content"><h2>ניסן תשפ"ה</h2></div>
+<div id="iyar1" class="month-content"><h2>אייר תשפ"ה</h2></div>
+<div id="sivan1" class="month-content"><h2>סיון תשפ"ה</h2></div>
+<div id="tamuz1" class="month-content"><h2>תמוז תשפ"ה</h2></div>
+<div id="av1" class="month-content"><h2>אב תשפ"ה</h2></div>
+<div id="elul1" class="month-content"><h2>אלול תשפ"ה</h2></div>
+
+<!-- תוכן חודשים תשפ"ו -->
+<div id="tishrei2" class="month-content"><h2>תשרי תשפ"ו</h2></div>
+<div id="cheshvan2" class="month-content"><h2>חשוון תשפ"ו</h2></div>
+<div id="kislev2" class="month-content"><h2>כסלו תשפ"ו</h2></div>
+<div id="tevet2" class="month-content"><h2>טבת תשפ"ו</h2></div>
+<div id="shevat2" class="month-content"><h2>שבט תשפ"ו</h2></div>
+<div id="adar2" class="month-content"><h2>אדר תשפ"ו</h2></div>
+<div id="nisan2" class="month-content"><h2>ניסן תשפ"ו</h2></div>
+<div id="iyar2" class="month-content"><h2>אייר תשפ"ו</h2></div>
+<div id="sivan2" class="month-content"><h2>סיון תשפ"ו</h2></div>
+<div id="tamuz2" class="month-content"><h2>תמוז תשפ"ו</h2></div>
+<div id="av2" class="month-content"><h2>אב תשפ"ו</h2></div>
+<div id="elul2" class="month-content"><h2>אלול תשפ"ו</h2></div>
+
 <script>
-  function toggleMonths(id) {
-    const el = document.getElementById(id);
-    if (el.style.display === 'block') {
-      el.style.display = 'none';
-    } else {
-      document.querySelectorAll('.months').forEach(div => div.style.display = 'none');
-      el.style.display = 'block';
-    }
+function toggleMonths(id) {
+  const el = document.getElementById(id);
+  if (el.style.display === 'block') {
+    el.style.display = 'none';
+  } else {
+    document.querySelectorAll('.months').forEach(div => div.style.display = 'none');
+    el.style.display = 'block';
   }
+}
+
+function showMonth(id) {
+  document.querySelectorAll('.month-content').forEach(div => div.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+}
 </script>
 
 <footer>
   מבית צ'אט גור עסקי
 </footer>
-
 </body>
 </html>
