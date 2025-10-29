@@ -1,188 +1,127 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-<meta charset="UTF-8" />
-<title>בית חיינו</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מרכז ההדרכות</title>
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-image: url('https://i.ibb.co/Q7cfBwNT/IMG-20250731-WA0033-jpg.webp');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-  }
-  header {
-    background-color: rgba(0,0,0,0.6);
-    padding: 20px;
-    font-size: 36px;
-    font-weight: bold;
-  }
-  .notice {
-    background-color: #fff3f3;
-    border: 2px solid red;
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-    padding: 15px;
-    margin: 20px auto;
-    width: 70%;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  }
-  .year-button {
-    background-color: rgba(0,0,0,0.5);
-    border: 1px solid white;
-    border-radius: 8px;
-    color: white;
-    padding: 15px 30px;
-    font-size: 24px;
-    margin: 20px 10px;
-    cursor: pointer;
-    display: inline-block;
-  }
-  .months {
-    display: none;
-    margin-top: 10px;
-    background-color: rgba(0,0,0,0.5);
-    padding: 15px;
-    border-radius: 8px;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .months a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    padding: 8px 0;
-    border-bottom: 1px solid white;
-    cursor: pointer;
-  }
-  .months a:last-child {
-    border-bottom: none;
-  }
-  .months a:hover {
-    background-color: rgba(255,255,255,0.2);
-  }
-  .month-content {
-    display: none;
-    margin: 20px auto;
-    background-color: rgba(0,0,0,0.6);
-    padding: 15px;
-    border-radius: 10px;
-    width: 80%;
-  }
-  .month-content h2 {
-    color: #fff;
-  }
-  .month-content .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
-  }
-  .month-content .gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  }
-  footer {
-    margin-top: 40px;
-    font-size: 16px;
-    color: #fff;
-    opacity: 0.8;
-  }
+body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; direction: rtl; }
+header { background: #003366; color: white; padding: 10px; display: flex; align-items: center; justify-content: space-between; }
+header img { height: 50px; }
+header h1 { margin: 0; font-size: 1.5em; }
+.tabs { display: flex; background: #ddd; }
+.tab { padding: 10px 20px; cursor: pointer; border-right: 1px solid #bbb; flex: 1; text-align: center; }
+.tab.active { background: white; font-weight: bold; }
+.tab-content { display: none; padding: 20px; background: white; }
+.tab-content.active { display: block; }
+.search-box { margin-bottom: 15px; width: 100%; padding: 8px; font-size: 1em; }
+.topic { margin-bottom: 10px; }
+.topic button { width: 100%; text-align: right; padding: 10px; background: #eee; border: none; cursor: pointer; font-size: 1em; }
+.topic button:hover { background: #ddd; }
+.details { display: none; padding: 10px 15px; background: #f9f9f9; border-right: 2px solid #003366; margin-bottom: 10px; white-space: pre-wrap; }
 </style>
 </head>
 <body>
-<header>בית חיינו</header>
 
-<div class="notice">
-   האתר בהרצה – ייתכנו שינויים ושדרוגים בהמשך
+<header>
+<img src="https://i.postimg.cc/kDK1cdcC/logo.png" alt="לוגו החברה">
+<h1>מרכז ההדרכות</h1>
+</header>
+
+<div class="tabs">
+<div class="tab active" onclick="showTab('service')">שירות</div>
+<div class="tab" onclick="showTab('support')">תמיכה</div>
+<div class="tab" onclick="showTab('general')">כללי</div>
 </div>
 
-<!-- כפתורי שנים -->
-<div>
-  <div class="year-button" onclick="toggleMonths('year1')">תשפ״ה</div>
-  <div id="year1" class="months">
-    <a href="#" onclick="showMonth('tishrei1')">תשרי</a>
-    <a href="#" onclick="showMonth('cheshvan1')">חשוון</a>
-    <a href="#" onclick="showMonth('kislev1')">כסלו</a>
-    <a href="#" onclick="showMonth('tevet1')">טבת</a>
-    <a href="#" onclick="showMonth('shevat1')">שבט</a>
-    <a href="#" onclick="showMonth('adar1')">אדר</a>
-    <a href="#" onclick="showMonth('nisan1')">ניסן</a>
-    <a href="#" onclick="showMonth('iyar1')">אייר</a>
-    <a href="#" onclick="showMonth('sivan1')">סיון</a>
-    <a href="#" onclick="showMonth('tamuz1')">תמוז</a>
-    <a href="#" onclick="showMonth('av1')">אב</a>
-    <a href="#" onclick="showMonth('elul1')">אלול</a>
-  </div>
+<!-- שירות -->
+<div id="service" class="tab-content active">
+<input type="text" class="search-box" placeholder="חפש נושא בשירות..." onkeyup="searchTopics('service', this.value)">
+
+<div class="topic"><button onclick="toggleDetails(this)">שינוי פרטי אשראי</button><div class="details">הזמנה > פרטי אשראי (מתחת המוצרים בהזמנה) > הזנת פרטי כ. אשראי חדשים > שמור</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">שינוי אמצעי תשלום להו"ק בנקאית</button><div class="details">הזמנה > אמצעי תשלום הו"ק: הו"ק בנקאית / מס"ב. לשנות א. תשלום למס"ב: V. בוצע ווידוא פרטי הו"ק אצל הלקוח: V > למלא את פרטי הבנק של הלקוח ולצרף טופס הו"ק חתום ללא הגבלת סכום. פעולה זו נדרשת לביצוע גם בלקוח עצמו (עדכון פרטי הו"ק ועדכון אמצעי תשלום להו"ק גם בלקוח וגם בהזמנה)</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">זיכויים</button><div class="details">יש להעביר לכספים</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">שליחת חשבונית</button><div class="details">הזמנה > מסמכי הנה"ח > יש לסמן את החשבוניות הרצויות > אימייל</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">תשלום חוב</button><div class="details">הזמנה > ביצוע חיוב מחזורי (למעלה מתחת שם הלקוח) > אישור</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">שדרוג / שנמוך חבילה 019</button><div class="details">ניתן לשנמך אך ורק בין ה 1-5 לחודש הזמנה > בחירת המוצר הרלוונטי במוצרים בהזמנות > מוצר מהקטלוג: יש לבחור בחבילה הרצויה. > האם ברצונך לשנות...? כן > 019 - שדרוג / שנמוך חבילה: שמור > יש להמתין כחצי דקה וללחוץ על לחצן רענון הממוקם בשורת הכותרת 'מוצרים בהזמנות' ולוודא שסטטוס המוצר משתנה חזרה ל 'שירות בתשלום פעיל'</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">שדרוג / שנמוך חבילה סלקום</button><div class="details">ניתן לשנמך אך ורק בין ה 1-5 לחודש הזמנה > בחירת המוצר הרלוונטי במוצרים בהזמנות > מוצר מהקטלוג: יש לבחור בחבילה הרצויה. > האם ברצונך לשנות...? כן > סלקום - שדרוג / שנמוך חבילה: שמור > יש להמתין כחצי דקה וללחוץ על לחצן רענון הממוקם בשורת הכותרת 'מוצרים בהזמנות' ולוודא שסטטוס המוצר משתנה חזרה ל 'שירות בתשלום פעיל'. טופס בדיקת נתוני מנוי > ריענון מנוי > לוודא שהחבילה וסטטוס המנוי מסונכרנים</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">שדרוג חבילה פלאפון</button><div class="details">הזמנה > בחירת המוצר הרלוונטי במוצרים בהזמנות > מוצר מהקטלוג: יש לבחור בחבילה הרצויה. > האם ברצונך לשנות...? כן. במידה והמנוי בסטטוס: ניצל גלישה > פלאפון - שדרוג חבילה > שמור > שמור > יש להמתין כחצי דקה וללחוץ על לחצן רענון הממוקם בשורת הכותרת 'מוצרים בהזמנות' ולוודא שסטטוס המוצר משתנה חזרה ל 'שירות בתשלום פעיל'</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">שנמוך חבילה פלאפון</button><div class="details">ניתן לשנמך אך ורק בין ה 1-5 לחודש הזמנה > בחירת המוצר הרלוונטי במוצרים בהזמנות > מוצר מהקטלוג: יש לבחור בחבילה הרצויה. > האם ברצונך לשנות...? כן > שמור</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">הוספת / הסרת סינון נטפרי</button><div class="details">הזמנה > בחירת המוצר הרלוונטי במוצרים בהזמנות > מוצר מהקטלוג: יש לבחור בחבילה הרצויה. > האם ברצונך לשנות...? כן > 019 - הסרת / הוספת נטפרי > שמור > שמור > יש להמתין כחצי דקה וללחוץ על לחצן רענון הממוקם בשורת הכותרת 'מוצרים בהזמנות' ולוודא שסטטוס המוצר משתנה חזרה ל 'שירות בתשלום פעיל'</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">ביטול מנוי - סימים</button><div class="details">הזמנה > בחירת המוצר הרלוונטי במוצרים בהזמנות > {שם החברה} - ביטול מנוי > לבחור את סיבת הביטול > שמור > יש להמתין כחצי דקה וללחוץ על לחצן רענון הממוקם בשורת הכותרת 'מוצרים בהזמנות' ולוודא שסטטוס המוצר משתנה ל'הזמנה בוטלה ממתין לחיוב אחרון'</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">בירור ניצול גלישה כל החברות</button><div class="details">הזמנה > יש להעתיק את מס' המנוי המבוקש > טופס בדיקת נתוני מנוי</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">הוספת IP קבוע 019</button><div class="details">מערכת 019 > סלולר (בנייח יש לבחור באינטרנט) > הזנת מס' המנוי > בחר פעולה > הגדרת תוספות > הוספת כתובת ip קבוע. דיווח בקאלה > הזמנה > יש לבחור את המוצר הרלוונטי (המנוי עליו הלקוח מבקש להוסיף את השירות) > יש לבחור במוצר: 'ip קבוע 019' > שמור > לגלול למטה ל'תת מוצרים' > להיכנס למוצר ip קבוע 019 > למלא את השדות: מס' מנוי, כתובת ip (מופיע במערכת 019 מיד לאחר הפעולה) > שמור > שמור</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">הוספת / הסרת מייל בלבד - 019</button><div class="details">מערכת 019 > סלולר (בנייח יש לבחור באינטרנט) > הזנת מס' המנוי > בחר פעולה > הוספת / הסרת מייל בלבד > (אין צורך לדווח בקאלה, רק לתעד)</div></div>
+
+<!-- כאן ניתן להוסיף שאר הנושאים של שירות לפי הרשימה שלך -->
+
 </div>
 
-<div>
-  <div class="year-button" onclick="toggleMonths('year2')">תשפ״ו</div>
-  <div id="year2" class="months">
-    <a href="#" onclick="showMonth('tishrei2')">תשרי</a>
-    <a href="#" onclick="showMonth('cheshvan2')">חשוון</a>
-    <a href="#" onclick="showMonth('kislev2')">כסלו</a>
-    <a href="#" onclick="showMonth('tevet2')">טבת</a>
-    <a href="#" onclick="showMonth('shevat2')">שבט</a>
-    <a href="#" onclick="showMonth('adar2')">אדר</a>
-    <a href="#" onclick="showMonth('nisan2')">ניסן</a>
-    <a href="#" onclick="showMonth('iyar2')">אייר</a>
-    <a href="#" onclick="showMonth('sivan2')">סיון</a>
-    <a href="#" onclick="showMonth('tamuz2')">תמוז</a>
-    <a href="#" onclick="showMonth('av2')">אב</a>
-    <a href="#" onclick="showMonth('elul2')">אלול</a>
-  </div>
+<!-- תמיכה -->
+<div id="support" class="tab-content">
+<input type="text" class="search-box" placeholder="חפש נושא בתמיכה..." onkeyup="searchTopics('support', this.value)">
+
+<div class="topic"><button onclick="toggleDetails(this)">פתרון תקלות למנוי שגלש קודם - 19</button><div class="details">בדיקת נתוני מנוי לפי הסדר הבא: ניצול חבילה, סטטוס, התאמת מס' מנוי וסים > כניסה ל 1.2.3.4 > הפנייה ל 019 > לקוח שחוזר אלינו אחרי שפנה ל 019 יש לערב את המנהלים בקוצת 019 תמיכה</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">פתרון תקלות למנוי שגלש קודם - פלאפון</button><div class="details">בדיקת סטטוס מנוי, בדיקת נתוני מנוי (סטטוס, התאמת מס' מנוי וסים) > כניסה ל 1.2.3.4 > ריענון מנוי בטופס והפעלת הציוד מחדש ע"י הלקוח > הדמיית מנוי > העברה למנהל</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">פתרון תקלות למנוי שגלש קודם - סלקום</button><div class="details">בדיקת סטטוס מנוי, בדיקת נתוני מנוי (סטטוס, התאמת מס' מנוי וסים) > כניסה ל 1.2.3.4 > ריענון מנוי בטופס והפעלת הציוד מחדש ע"י הלקוח > הדמיית מנוי > העברה למנהל</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">פתרון תקלות למנוי חדש - התחברות ראשונית לאינטרנט</button><div class="details">יש לוודא תחילה שהמחשב מזהה את הנטסטיק, בחיווי של האינטרנט בתחתית המסך בצד שמאל, יש לבדוק האם יש ציור של גלובוס (אין אינטרנט) או מחשב מחובר / חיבור wifi (יש חיבור). במידה וזה על גלובוס יש לרחף עליו עם העכבר ולראות האם רשום רשת ללא (גישה) לאינטרנט א"כ זה אומר שהמחשב לא מזהה את הציוד, יש להיכנס למחשב זה, לראות האם ההתקן מופיע שם, ללחוץ עליו לחצן ימני בעכבר > התקן או הפעל. אם המחשב כן מזהה את הציוד אבל רושם ללא גישה, יכול להיות שהסים לא מוכנס תקין או שצריך להגדיר apn (בדגמי ואווי ישנים ללא סוללה) או בדגמים אחרים ישנים מאוד.</div></div>
+
+<!-- כאן ניתן להוסיף שאר הנושאים של תמיכה לפי הרשימה שלך -->
+
 </div>
 
-<!-- חודש אב תשפ״ה -->
-<div id="av1" class="month-content">
-  <h2>אב תשפ״ה</h2>
-  <div class="gallery">
-    <img src="https://i.ibb.co/mrygwNj9/7-jpg.webp" alt="7-jpg">
-    <img src="https://i.ibb.co/ym1K4Ys8/3-rotated-jpg.webp" alt="3-rotated-jpg">
-    <img src="https://i.ibb.co/WpRCXs5J/1000089556-jpeg.webp" alt="1000089556-jpeg">
-    <img src="https://i.ibb.co/ZzhqpwDf/18-jpg.webp" alt="18-jpg">
-    <img src="https://i.ibb.co/jP7S82v8/15-jpg.webp" alt="15-jpg">
-    <img src="https://i.ibb.co/xtb9hHdH/14-jpg.webp" alt="14-jpg">
-    <img src="https://i.ibb.co/Ng23b1nw/12-jpg.webp" alt="12-jpg">
-    <img src="https://i.ibb.co/Z68RMcrF/11-jpg.webp" alt="11-jpg">
-    <img src="https://i.ibb.co/BVwX85Sm/IMG-20250731-WA0021-jpg.webp" alt="IMG-20250731-WA0021-jpg">
-    <img src="https://i.ibb.co/5hBSpyRx/IMG-20250731-WA0025-jpg.webp" alt="IMG-20250731-WA0025-jpg">
-    <img src="https://i.ibb.co/2YYWPx1N/IMG-20250731-WA0029-jpg.webp" alt="IMG-20250731-WA0029-jpg">
-    <img src="https://i.ibb.co/3mmNVBW4/IMG-20250731-WA0032-jpg.webp" alt="IMG-20250731-WA0032-jpg">
-    <img src="https://i.ibb.co/hRv4kr2K/IMG-20250731-WA0027-jpg.webp" alt="IMG-20250731-WA0027-jpg">
-    <img src="https://i.ibb.co/ycxDMpPR/IMG-20250731-WA0043-jpg.webp" alt="IMG-20250731-WA0043-jpg">
-    <img src="https://i.ibb.co/FLtTKNpw/IMG-20250731-WA0037-jpg.webp" alt="IMG-20250731-WA0037-jpg">
-  </div>
+<!-- כללי -->
+<div id="general" class="tab-content">
+<input type="text" class="search-box" placeholder="חפש נושא בכללי..." onkeyup="searchTopics('general', this.value)">
+
+<div class="topic"><button onclick="toggleDetails(this)">איסוף סים מנקודת שירות</button><div class="details">יש להיכנס לקובץ נקודות איסוף סימים, לבחור את הנקודה הרצויה, ואחרי שהלקוח אוסף את הסים יש להפעיל אותו ולציין בגיליון 'פירוט הזמנות' את הפרטים הנדרשים לצורך תגמול הסוכן / החנות</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">מחיקת משתמש נטפרי - פלאפון / סלקום / ספוטנט</button><div class="details">יש להיכנס לאיזור האישי של נטפרי > isp > להזין כתובת ip של המנוי > איפוס חיבור</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">מחיקת משתמש נטפרי - 019</button><div class="details">מערכת 019 > סלולר (בנייח יש לבחור באינטרנט) > הזנת מס' המנוי > בחר פעולה > הגדרת תוספות > החלף IP</div></div>
+
 </div>
 
 <script>
-function toggleMonths(id) {
-  const el = document.getElementById(id);
-  if (el.style.display === 'block') {
-    el.style.display = 'none';
-  } else {
-    document.querySelectorAll('.months').forEach(div => div.style.display = 'none');
-    el.style.display = 'block';
-  }
+function showTab(tabId) {
+  document.querySelectorAll('.tab-content').forEach(div => div.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+  event.currentTarget.classList.add('active');
 }
 
-function showMonth(id) {
-  document.querySelectorAll('.month-content').forEach(div => div.style.display = 'none');
-  document.getElementById(id).style.display = 'block';
+function toggleDetails(button) {
+  const details = button.nextElementSibling;
+  details.style.display = details.style.display === 'block' ? 'none' : 'block';
+}
+
+function searchTopics(tabId, query) {
+  const tab = document.getElementById(tabId);
+  const topics = tab.querySelectorAll('.topic');
+  query = query.trim().toLowerCase();
+  
+  topics.forEach(topic => {
+    const text = topic.querySelector('button').innerText + " " + topic.querySelector('.details').innerText;
+    topic.style.display = text.toLowerCase().includes(query) ? 'block' : 'none';
+  });
 }
 </script>
 
-<footer>
-  מבית צ'אט גור עסקי
-</footer>
 </body>
 </html>
