@@ -1,192 +1,152 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-<meta charset="UTF-8" />
-<title>בית חיינו</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מרכז ההדרכות</title>
 <style>
   body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-image: url('https://i.ibb.co/Q7cfBwNT/IMG-20250731-WA0033-jpg.webp');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
+    background-color: #f4f4f4;
+    color: #111;
   }
   header {
-    background-color: rgba(0,0,0,0.6);
-    padding: 20px;
-    font-size: 36px;
-    font-weight: bold;
-  }
-  .notice {
-    background-color: #fff3f3;
-    border: 2px solid red;
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-    padding: 15px;
-    margin: 20px auto;
-    width: 70%;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  }
-  .year-button {
-    background-color: rgba(0,0,0,0.5);
-    border: 1px solid white;
-    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #4f46e5;
     color: white;
     padding: 15px 30px;
-    font-size: 24px;
-    margin: 20px 10px;
-    cursor: pointer;
-    display: inline-block;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   }
-  .months {
-    display: none;
-    margin-top: 10px;
-    background-color: rgba(0,0,0,0.5);
-    padding: 15px;
-    border-radius: 8px;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
+  header h1 {
+    margin: 0;
+    font-size: 28px;
   }
-  .months a {
-    display: block;
+  header img {
+    height: 50px;
+  }
+  .categories {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .category-btn {
+    background-color: #4f46e5;
     color: white;
-    text-decoration: none;
-    font-size: 20px;
-    padding: 8px 0;
-    border-bottom: 1px solid white;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 25px;
+    font-size: 18px;
     cursor: pointer;
+    transition: background 0.3s;
   }
-  .months a:last-child {
-    border-bottom: none;
+  .category-btn:hover {
+    background-color: #3730a3;
   }
-  .months a:hover {
-    background-color: rgba(255,255,255,0.2);
+  .content {
+    max-width: 900px;
+    margin: 0 auto 50px auto;
+    padding: 0 20px;
   }
-  .month-content {
-    display: none;
-    margin: 20px auto;
-    background-color: rgba(0,0,0,0.6);
+  .lesson {
+    background-color: white;
+    border-radius: 10px;
     padding: 15px;
-    border-radius: 10px;
-    width: 80%;
+    margin-bottom: 15px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
   }
-  .month-content img, .month-content video {
-    width: 300px;
-    margin: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  .lesson h3 {
+    margin: 0 0 10px 0;
+  }
+  .lesson video, .lesson img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
   }
   footer {
-    margin-top: 40px;
-    font-size: 16px;
-    color: #fff;
-    opacity: 0.8;
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 14px;
+    background-color: #e5e7eb;
   }
 </style>
 </head>
 <body>
-<header>בית חיינו</header>
 
-<div class="notice">
-  ⚠ האתר בהרצה – ייתכנו שינויים ושדרוגים בהמשך ⚠
+<header>
+  <h1>מרכז ההדרכות</h1>
+  <img src="085ab269-f770-42b3-8737-83eadd42e7d8.png" alt="לוגו החברה">
+</header>
+
+<div class="categories">
+  <button class="category-btn" onclick="showCategory('video')">וידאו</button>
+  <button class="category-btn" onclick="showCategory('pdf')">מדריכים PDF</button>
+  <button class="category-btn" onclick="showCategory('tips')">טיפים</button>
 </div>
 
-<!-- כפתורי שנים -->
-<div>
-  <div class="year-button" onclick="toggleMonths('year1')">תשפ&quot;ה</div>
-  <div id="year1" class="months">
-    <a href="#" onclick="showMonth('tishrei1')">תשרי</a>
-    <a href="#" onclick="showMonth('cheshvan1')">חשוון</a>
-    <a href="#" onclick="showMonth('kislev1')">כסלו</a>
-    <a href="#" onclick="showMonth('tevet1')">טבת</a>
-    <a href="#" onclick="showMonth('shevat1')">שבט</a>
-    <a href="#" onclick="showMonth('adar1')">אדר</a>
-    <a href="#" onclick="showMonth('nisan1')">ניסן</a>
-    <a href="#" onclick="showMonth('iyar1')">אייר</a>
-    <a href="#" onclick="showMonth('sivan1')">סיון</a>
-    <a href="#" onclick="showMonth('tamuz1')">תמוז</a>
-    <a href="#" onclick="showMonth('av1')">אב</a>
-    <a href="#" onclick="showMonth('elul1')">אלול</a>
-  </div>
+<div class="content" id="content-area">
+  <p>בחר קטגוריה כדי להציג הדרכות.</p>
 </div>
-
-<div>
-  <div class="year-button" onclick="toggleMonths('year2')">תשפ&quot;ו</div>
-  <div id="year2" class="months">
-    <a href="#" onclick="showMonth('tishrei2')">תשרי</a>
-    <a href="#" onclick="showMonth('cheshvan2')">חשוון</a>
-    <a href="#" onclick="showMonth('kislev2')">כסלו</a>
-    <a href="#" onclick="showMonth('tevet2')">טבת</a>
-    <a href="#" onclick="showMonth('shevat2')">שבט</a>
-    <a href="#" onclick="showMonth('adar2')">אדר</a>
-    <a href="#" onclick="showMonth('nisan2')">ניסן</a>
-    <a href="#" onclick="showMonth('iyar2')">אייר</a>
-    <a href="#" onclick="showMonth('sivan2')">סיון</a>
-    <a href="#" onclick="showMonth('tamuz2')">תמוז</a>
-    <a href="#" onclick="showMonth('av2')">אב</a>
-    <a href="#" onclick="showMonth('elul2')">אלול</a>
-  </div>
-</div>
-
-<!-- תוכן חודשים תשפ"ה -->
-<div id="tishrei1" class="month-content"><h2>תשרי תשפ"ה</h2></div>
-<div id="cheshvan1" class="month-content"><h2>חשוון תשפ"ה</h2></div>
-<div id="kislev1" class="month-content"><h2>כסלו תשפ"ה</h2></div>
-<div id="tevet1" class="month-content"><h2>טבת תשפ"ה</h2></div>
-<div id="shevat1" class="month-content"><h2>שבט תשפ"ה</h2></div>
-<div id="adar1" class="month-content"><h2>אדר תשפ"ה</h2></div>
-<div id="nisan1" class="month-content"><h2>ניסן תשפ"ה</h2></div>
-<div id="iyar1" class="month-content"><h2>אייר תשפ"ה</h2></div>
-<div id="sivan1" class="month-content"><h2>סיון תשפ"ה</h2></div>
-<div id="tamuz1" class="month-content"><h2>תמוז תשפ"ה</h2></div>
-<div id="av1" class="month-content">
-  <h2>אב תשפ"ה</h2>
-  <a href="https://ibb.co/Z65DTtZX" target="_blank">
-    <img src="https://i.ibb.co/Z65DTtZX/IMG-20250807-WA0054.webp" alt="תמונה של אב תשפ"ה">
-  </a>
-</div>
-<div id="elul1" class="month-content">
-  <h2>אלול תשפ"ה</h2>
-</div>
-
-<!-- תוכן חודשים תשפ"ו -->
-<div id="tishrei2" class="month-content"><h2>תשרי תשפ"ו</h2></div>
-<div id="cheshvan2" class="month-content"><h2>חשוון תשפ"ו</h2></div>
-<div id="kislev2" class="month-content"><h2>כסלו תשפ"ו</h2></div>
-<div id="tevet2" class="month-content"><h2>טבת תשפ"ו</h2></div>
-<div id="shevat2" class="month-content"><h2>שבט תשפ"ו</h2></div>
-<div id="adar2" class="month-content"><h2>אדר תשפ"ו</h2></div>
-<div id="nisan2" class="month-content"><h2>ניסן תשפ"ו</h2></div>
-<div id="iyar2" class="month-content"><h2>אייר תשפ"ו</h2></div>
-<div id="sivan2" class="month-content"><h2>סיון תשפ"ו</h2></div>
-<div id="tamuz2" class="month-content"><h2>תמוז תשפ"ו</h2></div>
-<div id="av2" class="month-content"><h2>אב תשפ"ו</h2></div>
-<div id="elul2" class="month-content"><h2>אלול תשפ"ו</h2></div>
 
 <script>
-function toggleMonths(id) {
-  const el = document.getElementById(id);
-  if (el.style.display === 'block') {
-    el.style.display = 'none';
-  } else {
-    document.querySelectorAll('.months').forEach(div => div.style.display = 'none');
-    el.style.display = 'block';
-  }
-}
+  const lessons = {
+    video: [
+      { title: "הדרכה 1 - התחלה", type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+      { title: "הדרכה 2 - ממשק משתמש", type: "video", src: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" }
+    ],
+    pdf: [
+      { title: "מדריך PDF 1", type: "link", src: "https://example.com/guide1.pdf" },
+      { title: "מדריך PDF 2", type: "link", src: "https://example.com/guide2.pdf" }
+    ],
+    tips: [
+      { title: "טיפ 1", type: "text", text: "טיפ חשוב לשימוש במערכת." },
+      { title: "טיפ 2", type: "text", text: "טיפ נוסף לשיפור העבודה." }
+    ]
+  };
 
-function showMonth(id) {
-  document.querySelectorAll('.month-content').forEach(div => div.style.display = 'none');
-  document.getElementById(id).style.display = 'block';
-}
+  function showCategory(category) {
+    const area = document.getElementById('content-area');
+    area.innerHTML = '';
+    if (!lessons[category] || lessons[category].length === 0) {
+      area.innerHTML = '<p>אין תוכן לקטגוריה זו.</p>';
+      return;
+    }
+    lessons[category].forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'lesson';
+      const h3 = document.createElement('h3');
+      h3.textContent = item.title;
+      div.appendChild(h3);
+
+      if (item.type === 'video') {
+        const video = document.createElement('video');
+        video.src = item.src;
+        video.controls = true;
+        div.appendChild(video);
+      } else if (item.type === 'link') {
+        const a = document.createElement('a');
+        a.href = item.src;
+        a.textContent = 'פתח מדריך PDF';
+        a.target = '_blank';
+        div.appendChild(a);
+      } else if (item.type === 'text') {
+        const p = document.createElement('p');
+        p.textContent = item.text;
+        div.appendChild(p);
+      }
+
+      area.appendChild(div);
+    });
+  }
 </script>
 
 <footer>
-  מבית צ'אט גור עסקי
 </footer>
+
 </body>
 </html>
