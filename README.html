@@ -5,148 +5,123 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>מרכז ההדרכות</title>
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #111;
-  }
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #4f46e5;
-    color: white;
-    padding: 15px 30px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  }
-  header h1 {
-    margin: 0;
-    font-size: 28px;
-  }
-  header img {
-    height: 50px;
-  }
-  .categories {
-    display: flex;
-    justify-content: center;
-    margin: 30px 0;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-  .category-btn {
-    background-color: #4f46e5;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 15px 25px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  .category-btn:hover {
-    background-color: #3730a3;
-  }
-  .content {
-    max-width: 900px;
-    margin: 0 auto 50px auto;
-    padding: 0 20px;
-  }
-  .lesson {
-    background-color: white;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.1);
-  }
-  .lesson h3 {
-    margin: 0 0 10px 0;
-  }
-  .lesson video, .lesson img {
-    width: 100%;
-    border-radius: 8px;
-    margin-top: 10px;
-  }
-  footer {
-    text-align: center;
-    padding: 20px;
-    color: #666;
-    font-size: 14px;
-    background-color: #e5e7eb;
-  }
+body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; direction: rtl; }
+header { background: #003366; color: white; padding: 10px; display: flex; align-items: center; justify-content: space-between; }
+header img { height: 50px; }
+header h1 { margin: 0; font-size: 1.5em; }
+.tabs { display: flex; background: #ddd; }
+.tab { padding: 10px 20px; cursor: pointer; border-right: 1px solid #bbb; flex: 1; text-align: center; }
+.tab.active { background: white; font-weight: bold; }
+.tab-content { display: none; padding: 20px; background: white; }
+.tab-content.active { display: block; }
+.search-box { margin-bottom: 15px; width: 100%; padding: 8px; font-size: 1em; }
+.topic { margin-bottom: 10px; }
+.topic button { width: 100%; text-align: right; padding: 10px; background: #eee; border: none; cursor: pointer; font-size: 1em; }
+.topic button:hover { background: #ddd; }
+.details { display: none; padding: 10px 15px; background: #f9f9f9; border-right: 2px solid #003366; margin-bottom: 10px; white-space: pre-wrap; }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>מרכז ההדרכות</h1>
-  <img srchttps://postimg.cc/kDK1cdcC alt="לוגו החברה">
+<img src="https://i.postimg.cc/kDK1cdcC/logo.png" alt="לוגו החברה">
+<h1>מרכז ההדרכות</h1>
 </header>
 
-<div class="categories">
-  <button class="category-btn" onclick="showCategory('video')">וידאו</button>
-  <button class="category-btn" onclick="showCategory('pdf')">מדריכים PDF</button>
-  <button class="category-btn" onclick="showCategory('tips')">טיפים</button>
+<div class="tabs">
+<div class="tab active" onclick="showTab('service')">שירות</div>
+<div class="tab" onclick="showTab('support')">תמיכה</div>
+<div class="tab" onclick="showTab('general')">כללי</div>
 </div>
 
-<div class="content" id="content-area">
-  <p>בחר קטגוריה כדי להציג הדרכות.</p>
+<!-- שירות -->
+<div id="service" class="tab-content active">
+<input type="text" class="search-box" placeholder="חפש נושא בשירות..." onkeyup="searchTopics('service', this.value)">
+
+<div class="topic"><button onclick="toggleDetails(this)">שינוי פרטי אשראי</button><div class="details">הזמנה > פרטי אשראי (מתחת המוצרים בהזמנה) > הזנת פרטי כ. אשראי חדשים > שמור</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">שינוי אמצעי תשלום להו"ק בנקאית</button><div class="details">הזמנה > אמצעי תשלום הו"ק: הו"ק בנקאית / מס"ב. לשנות א. תשלום למס"ב: V. בוצע ווידוא פרטי הו"ק אצל הלקוח: V > למלא את פרטי הבנק של הלקוח ולצרף טופס הו"ק חתום ללא הגבלת סכום. פעולה זו נדרשת לביצוע גם בלקוח עצמו (עדכון פרטי הו"ק ועדכון אמצעי תשלום להו"ק גם בלקוח וגם בהזמנה)</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">זיכויים</button><div class="details">יש להעביר לכספים</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">שליחת חשבונית</button><div class="details">הזמנה > מסמכי הנה"ח > יש לסמן את החשבוניות הרצויות > אימייל</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">תשלום חוב</button><div class="details">הזמנה > ביצוע חיוב מחזורי (למעלה מתחת שם הלקוח) > אישור</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">שדרוג / שנמוך חבילה 019</button><div class="details">ניתן לשנמך אך ורק בין ה 1-5 לחודש הזמנה > בחירת המוצר הרלוונטי במוצרים בהזמנות > מוצר מהקטלוג: יש לבחור בחבילה הרצויה. > האם ברצונך לשנות...? כן > 019 - שדרוג / שנמוך חבילה: שמור > יש להמתין כחצי דקה וללחוץ על לחצן רענון הממוקם בשורת הכותרת 'מוצרים בהזמנות' ולוודא שסטטוס המוצר משתנה חזרה ל 'שירות בתשלום פעיל'</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">שדרוג / שנמוך חבילה סלקום</button><div class="details">ניתן לשנמך אך ורק בין ה 1-5 לחודש הזמנה > בחירת המוצר הרלוונטי במוצרים בהזמנות > מוצר מהקטלוג: יש לבחור בחבילה הרצויה. > האם ברצונך לשנות...? כן > סלקום - שדרוג / שנמוך חבילה: שמור > יש להמתין כחצי דקה וללחוץ על לחצן רענון הממוקם בשורת הכותרת 'מוצרים בהזמנות' ולוודא שסטטוס המוצר משתנה חזרה ל 'שירות בתשלום פעיל'. טופס בדיקת נתוני מנוי > ריענון מנוי > לוודא שהחבילה וסטטוס המנוי מסונכרנים</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">שדרוג חבילה פלאפון</button><div class="details">הזמנה > בחירת המוצר הרלוונטי במוצרים בהזמנות > מוצר מהקטלוג: יש לבחור בחבילה הרצויה. > האם ברצונך לשנות...? כן. במידה והמנוי בסטטוס: ניצל גלישה > פלאפון - שדרוג חבילה > שמור > שמור > יש להמתין כחצי דקה וללחוץ על לחצן רענון הממוקם בשורת הכותרת 'מוצרים בהזמנות' ולוודא שסטטוס המוצר משתנה חזרה ל 'שירות בתשלום פעיל'</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">שנמוך חבילה פלאפון</button><div class="details">ניתן לשנמך אך ורק בין ה 1-5 לחודש הזמנה > בחירת המוצר הרלוונטי במוצרים בהזמנות > מוצר מהקטלוג: יש לבחור בחבילה הרצויה. > האם ברצונך לשנות...? כן > שמור</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">הוספת / הסרת סינון נטפרי</button><div class="details">הזמנה > בחירת המוצר הרלוונטי במוצרים בהזמנות > מוצר מהקטלוג: יש לבחור בחבילה הרצויה. > האם ברצונך לשנות...? כן > 019 - הסרת / הוספת נטפרי > שמור > שמור > יש להמתין כחצי דקה וללחוץ על לחצן רענון הממוקם בשורת הכותרת 'מוצרים בהזמנות' ולוודא שסטטוס המוצר משתנה חזרה ל 'שירות בתשלום פעיל'</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">ביטול מנוי - סימים</button><div class="details">הזמנה > בחירת המוצר הרלוונטי במוצרים בהזמנות > {שם החברה} - ביטול מנוי > לבחור את סיבת הביטול > שמור > יש להמתין כחצי דקה וללחוץ על לחצן רענון הממוקם בשורת הכותרת 'מוצרים בהזמנות' ולוודא שסטטוס המוצר משתנה ל'הזמנה בוטלה ממתין לחיוב אחרון'</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">בירור ניצול גלישה כל החברות</button><div class="details">הזמנה > יש להעתיק את מס' המנוי המבוקש > טופס בדיקת נתוני מנוי</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">הוספת IP קבוע 019</button><div class="details">מערכת 019 > סלולר (בנייח יש לבחור באינטרנט) > הזנת מס' המנוי > בחר פעולה > הגדרת תוספות > הוספת כתובת ip קבוע. דיווח בקאלה > הזמנה > יש לבחור את המוצר הרלוונטי (המנוי עליו הלקוח מבקש להוסיף את השירות) > יש לבחור במוצר: 'ip קבוע 019' > שמור > לגלול למטה ל'תת מוצרים' > להיכנס למוצר ip קבוע 019 > למלא את השדות: מס' מנוי, כתובת ip (מופיע במערכת 019 מיד לאחר הפעולה) > שמור > שמור</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">הוספת / הסרת מייל בלבד - 019</button><div class="details">מערכת 019 > סלולר (בנייח יש לבחור באינטרנט) > הזנת מס' המנוי > בחר פעולה > הוספת / הסרת מייל בלבד > (אין צורך לדווח בקאלה, רק לתעד)</div></div>
+
+<!-- כאן ניתן להוסיף שאר הנושאים של שירות לפי הרשימה שלך -->
+
+</div>
+
+<!-- תמיכה -->
+<div id="support" class="tab-content">
+<input type="text" class="search-box" placeholder="חפש נושא בתמיכה..." onkeyup="searchTopics('support', this.value)">
+
+<div class="topic"><button onclick="toggleDetails(this)">פתרון תקלות למנוי שגלש קודם - 19</button><div class="details">בדיקת נתוני מנוי לפי הסדר הבא: ניצול חבילה, סטטוס, התאמת מס' מנוי וסים > כניסה ל 1.2.3.4 > הפנייה ל 019 > לקוח שחוזר אלינו אחרי שפנה ל 019 יש לערב את המנהלים בקוצת 019 תמיכה</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">פתרון תקלות למנוי שגלש קודם - פלאפון</button><div class="details">בדיקת סטטוס מנוי, בדיקת נתוני מנוי (סטטוס, התאמת מס' מנוי וסים) > כניסה ל 1.2.3.4 > ריענון מנוי בטופס והפעלת הציוד מחדש ע"י הלקוח > הדמיית מנוי > העברה למנהל</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">פתרון תקלות למנוי שגלש קודם - סלקום</button><div class="details">בדיקת סטטוס מנוי, בדיקת נתוני מנוי (סטטוס, התאמת מס' מנוי וסים) > כניסה ל 1.2.3.4 > ריענון מנוי בטופס והפעלת הציוד מחדש ע"י הלקוח > הדמיית מנוי > העברה למנהל</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">פתרון תקלות למנוי חדש - התחברות ראשונית לאינטרנט</button><div class="details">יש לוודא תחילה שהמחשב מזהה את הנטסטיק, בחיווי של האינטרנט בתחתית המסך בצד שמאל, יש לבדוק האם יש ציור של גלובוס (אין אינטרנט) או מחשב מחובר / חיבור wifi (יש חיבור). במידה וזה על גלובוס יש לרחף עליו עם העכבר ולראות האם רשום רשת ללא (גישה) לאינטרנט א"כ זה אומר שהמחשב לא מזהה את הציוד, יש להיכנס למחשב זה, לראות האם ההתקן מופיע שם, ללחוץ עליו לחצן ימני בעכבר > התקן או הפעל. אם המחשב כן מזהה את הציוד אבל רושם ללא גישה, יכול להיות שהסים לא מוכנס תקין או שצריך להגדיר apn (בדגמי ואווי ישנים ללא סוללה) או בדגמים אחרים ישנים מאוד.</div></div>
+
+<!-- כאן ניתן להוסיף שאר הנושאים של תמיכה לפי הרשימה שלך -->
+
+</div>
+
+<!-- כללי -->
+<div id="general" class="tab-content">
+<input type="text" class="search-box" placeholder="חפש נושא בכללי..." onkeyup="searchTopics('general', this.value)">
+
+<div class="topic"><button onclick="toggleDetails(this)">איסוף סים מנקודת שירות</button><div class="details">יש להיכנס לקובץ נקודות איסוף סימים, לבחור את הנקודה הרצויה, ואחרי שהלקוח אוסף את הסים יש להפעיל אותו ולציין בגיליון 'פירוט הזמנות' את הפרטים הנדרשים לצורך תגמול הסוכן / החנות</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">מחיקת משתמש נטפרי - פלאפון / סלקום / ספוטנט</button><div class="details">יש להיכנס לאיזור האישי של נטפרי > isp > להזין כתובת ip של המנוי > איפוס חיבור</div></div>
+
+<div class="topic"><button onclick="toggleDetails(this)">מחיקת משתמש נטפרי - 019</button><div class="details">מערכת 019 > סלולר (בנייח יש לבחור באינטרנט) > הזנת מס' המנוי > בחר פעולה > הגדרת תוספות > החלף IP</div></div>
+
 </div>
 
 <script>
-  const lessons = {
-    video: [
-      { title: "הדרכה 1 - התחלה", type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-      { title: "הדרכה 2 - ממשק משתמש", type: "video", src: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" }
-    ],
-    pdf: [
-      { title: "מדריך PDF 1", type: "link", src: "https://example.com/guide1.pdf" },
-      { title: "מדריך PDF 2", type: "link", src: "https://example.com/guide2.pdf" }
-    ],
-    tips: [
-      { title: "טיפ 1", type: "text", text: "טיפ חשוב לשימוש במערכת." },
-      { title: "טיפ 2", type: "text", text: "טיפ נוסף לשיפור העבודה." }
-    ]
-  };
+function showTab(tabId) {
+  document.querySelectorAll('.tab-content').forEach(div => div.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+}
 
-  function showCategory(category) {
-    const area = document.getElementById('content-area');
-    area.innerHTML = '';
-    if (!lessons[category] || lessons[category].length === 0) {
-      area.innerHTML = '<p>אין תוכן לקטגוריה זו.</p>';
-      return;
-    }
-    lessons[category].forEach(item => {
-      const div = document.createElement('div');
-      div.className = 'lesson';
-      const h3 = document.createElement('h3');
-      h3.textContent = item.title;
-      div.appendChild(h3);
+function toggleDetails(button) {
+  const details = button.nextElementSibling;
+  details.style.display = details.style.display === 'block' ? 'none' : 'block';
+}
 
-      if (item.type === 'video') {
-        const video = document.createElement('video');
-        video.src = item.src;
-        video.controls = true;
-        div.appendChild(video);
-      } else if (item.type === 'link') {
-        const a = document.createElement('a');
-        a.href = item.src;
-        a.textContent = 'פתח מדריך PDF';
-        a.target = '_blank';
-        div.appendChild(a);
-      } else if (item.type === 'text') {
-        const p = document.createElement('p');
-        p.textContent = item.text;
-        div.appendChild(p);
-      }
-
-      area.appendChild(div);
-    });
-  }
+function searchTopics(tabId, query) {
+  const tab = document.getElementById(tabId);
+  const topics = tab.querySelectorAll('.topic');
+  query = query.trim().toLowerCase();
+  
+  topics.forEach(topic => {
+    const text = topic.querySelector('button').innerText + " " + topic.querySelector('.details').innerText;
+    topic.style.display = text.toLowerCase().includes(query) ? 'block' : 'none';
+  });
+}
 </script>
-
-<footer>
-</footer>
 
 </body>
 </html>
